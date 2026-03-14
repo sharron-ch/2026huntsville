@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>納什維爾 & 亨茨維爾 · 家族旅遊 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --vermillion: #C0392B;
+  --deep-red: #8B1A1A;
+  --ink: #1A1208;
+  --ink-mid: #3D2B1A;
+  --ink-light: #7A5C3A;
+  --rice: #FAF5E8;
+  --rice-dark: #EFE5C8;
+  --gold: #C9943A;
+  --gold-light: #E8C97A;
+  --jade: #2D6A4F;
+  --sky-blue: #1A4A7A;
+  --persimmon: #D4521A;
+  --amber: #E07B00;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--rice);
+  font-family: 'Noto Serif TC', 'PMingLiU', '新細明體', serif;
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.8;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(180,140,80,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(180,140,80,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  background: var(--ink);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 60% at 50% 110%, rgba(192,57,43,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 80% at 0% 50%, rgba(139,26,26,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 10%, rgba(201,148,58,0.15) 0%, transparent 50%);
+}
+
+.bamboo {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(201,148,58,0.15) 15%, rgba(201,148,58,0.08) 48%, rgba(201,148,58,0.15) 50%, rgba(201,148,58,0.08) 85%, transparent 100%);
+}
+.bamboo::before { content:''; position:absolute; left:50%; transform:translateX(-50%); top:33%; width:12px; height:1px; background:rgba(201,148,58,0.3); }
+.bamboo::after  { content:''; position:absolute; left:50%; transform:translateX(-50%); top:66%; width:12px; height:1px; background:rgba(201,148,58,0.3); }
+.bamboo.left { left:6%; }
+.bamboo.right { right:6%; }
+
+.ink-dots { position:absolute; inset:0; pointer-events:none; }
+.ink-dot {
+  position:absolute; border-radius:50%;
+  background:rgba(201,148,58,0.12);
+  animation:float var(--d,8s) ease-in-out infinite var(--dl,0s);
+}
+@keyframes float { 0%,100%{transform:translateY(0) scale(1);opacity:var(--op,.3);} 50%{transform:translateY(-8px) scale(1.05);opacity:calc(var(--op,.3)*0.5);} }
+
+.hero-inner { position:relative; z-index:2; padding:60px 24px 52px; text-align:center; }
+
+.stamp-top {
+  display:inline-block;
+  border:2px solid var(--vermillion);
+  padding:4px 14px;
+  font-family:'Noto Sans TC',sans-serif;
+  font-size:10px; font-weight:700;
+  letter-spacing:0.3em;
+  color:var(--vermillion);
+  margin-bottom:24px;
+}
+.stamp-top::before,.stamp-top::after { content:'●'; font-size:6px; vertical-align:middle; margin:0 6px; opacity:.7; }
+
+.hero h1 { font-family:'Noto Serif TC',serif; font-weight:900; color:var(--rice); line-height:1.15; margin-bottom:8px; }
+.h1-en { font-size:clamp(1.2rem,3.5vw,2rem); letter-spacing:.08em; color:rgba(250,245,232,0.5); font-weight:400; margin-bottom:4px; display:block; font-family:'Noto Sans TC',sans-serif; }
+.h1-zh { font-size:clamp(2.4rem,7vw,4.5rem); display:block; letter-spacing:.05em; }
+.h1-zh .amp { color:var(--gold); margin:0 8px; }
+.hero-subtitle { font-size:clamp(1rem,2.8vw,1.3rem); color:var(--gold-light); margin-top:6px; margin-bottom:28px; letter-spacing:.1em; font-weight:400; }
+
+.zh-rule { display:flex; align-items:center; justify-content:center; gap:12px; margin:0 auto 28px; max-width:280px; }
+.zh-rule::before,.zh-rule::after { content:''; flex:1; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); opacity:.6; }
+.zh-rule-diamond { width:6px; height:6px; background:var(--gold); transform:rotate(45deg); flex-shrink:0; }
+
+.hero-meta { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:4px; }
+.meta-tag { background:rgba(250,245,232,.07); border:1px solid rgba(201,148,58,.3); padding:6px 16px; font-family:'Noto Sans TC',sans-serif; font-size:.78rem; color:rgba(250,245,232,.75); letter-spacing:.05em; }
+
+/* ── NAV ── */
+.nav-strip {
+  background:var(--ink);
+  border-top:1px solid rgba(201,148,58,.2);
+  border-bottom:3px solid var(--vermillion);
+  display:flex; justify-content:center; flex-wrap:wrap; gap:2px; padding:0 12px;
+  position:sticky; top:0; z-index:100;
+}
+.nav-btn { background:none; border:none; cursor:pointer; padding:12px 10px 10px; display:flex; flex-direction:column; align-items:center; gap:3px; position:relative; transition:all .2s; }
+.nav-btn::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%) scaleX(0); width:80%; height:3px; background:var(--vermillion); transition:transform .2s; }
+.nav-btn.active::after { transform:translateX(-50%) scaleX(1); }
+.nav-kanji { width:32px; height:32px; border:1.5px solid rgba(201,148,58,.25); display:flex; align-items:center; justify-content:center; font-family:'Noto Serif TC',serif; font-size:.9rem; font-weight:700; color:rgba(250,245,232,.4); transition:all .2s; background:rgba(255,255,255,.03); }
+.nav-btn.active .nav-kanji { background:var(--vermillion); border-color:var(--vermillion); color:white; }
+.nav-label-zh { font-family:'Noto Sans TC',sans-serif; font-size:.55rem; font-weight:500; color:rgba(250,245,232,.35); letter-spacing:.05em; transition:color .2s; white-space:nowrap; }
+.nav-btn.active .nav-label-zh { color:var(--gold-light); }
+
+/* ── CONTENT ── */
+.content { max-width:800px; margin:0 auto; padding:40px 20px 80px; position:relative; z-index:1; }
+
+.day-panel { display:none; animation:unfurl .4s ease both; }
+.day-panel.active { display:block; }
+@keyframes unfurl { from{opacity:0;transform:translateY(14px);} to{opacity:1;transform:translateY(0);} }
+
+/* ── DAY HEADER ── */
+.day-header { display:flex; gap:20px; align-items:flex-start; margin-bottom:36px; padding-bottom:20px; border-bottom:1px solid; border-image:linear-gradient(to right,var(--accent,var(--vermillion)),transparent) 1; position:relative; }
+.day-header::after { content:''; position:absolute; bottom:-4px; left:0; width:40%; height:1px; background:linear-gradient(to right,rgba(192,57,43,.2),transparent); }
+
+.seal { flex-shrink:0; width:72px; height:72px; background:var(--vermillion); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; clip-path:polygon(10% 0%,90% 0%,100% 10%,100% 90%,90% 100%,10% 100%,0% 90%,0% 10%); }
+.seal::before { content:''; position:absolute; inset:4px; border:1px solid rgba(255,255,255,.3); clip-path:polygon(10% 0%,90% 0%,100% 10%,100% 90%,90% 100%,10% 100%,0% 90%,0% 10%); }
+.seal-word { font-family:'Noto Serif TC',serif; font-size:.55rem; font-weight:700; letter-spacing:.15em; color:rgba(255,255,255,.75); }
+.seal-num { font-family:'Noto Serif TC',serif; font-size:1.7rem; font-weight:900; color:white; line-height:1; }
+
+.day-date-zh { font-family:'Noto Sans TC',sans-serif; font-size:.72rem; font-weight:500; letter-spacing:.1em; color:var(--ink-light); margin-bottom:4px; }
+.day-title-zh { font-family:'Noto Serif TC',serif; font-size:clamp(1.2rem,3.5vw,1.75rem); font-weight:700; color:var(--ink); line-height:1.3; letter-spacing:.05em; }
+
+/* ── TIMELINE ── */
+.tl { position:relative; padding-left:36px; }
+.tl::before { content:''; position:absolute; left:9px; top:8px; bottom:8px; width:1px; background:linear-gradient(to bottom,var(--accent,var(--vermillion)),transparent); opacity:.35; }
+.ev { position:relative; margin-bottom:26px; }
+.ev::before { content:''; position:absolute; left:-29px; top:8px; width:10px; height:10px; background:var(--rice); border:2px solid var(--accent,var(--vermillion)); transform:rotate(45deg); z-index:1; }
+.ev-time { font-family:'Noto Sans TC',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.1em; color:var(--accent,var(--vermillion)); margin-bottom:3px; opacity:.85; }
+.ev-title-zh { font-family:'Noto Serif TC',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:5px; line-height:1.5; letter-spacing:.04em; }
+.ev-desc-zh { font-family:'Noto Sans TC',sans-serif; font-size:.875rem; line-height:1.8; color:var(--ink-mid); font-weight:300; }
+
+/* ── CALLOUTS ── */
+.callout { margin-top:10px; padding:10px 14px; font-family:'Noto Sans TC',sans-serif; font-size:.81rem; line-height:1.7; display:flex; gap:10px; align-items:flex-start; font-weight:400; }
+.callout-icon { flex-shrink:0; margin-top:2px; }
+.callout.ticket { background:rgba(201,148,58,.08); border-left:2px solid var(--gold); color:#6b4a00; }
+.callout.access { background:rgba(45,106,79,.07); border-left:2px solid var(--jade); color:var(--jade); }
+.callout.warn   { background:rgba(192,57,43,.06); border-left:2px solid var(--vermillion); color:var(--deep-red); }
+.callout.info   { background:rgba(26,74,122,.06); border-left:2px solid var(--sky-blue); color:var(--sky-blue); }
+.callout.alert  { background:rgba(224,123,0,.1); border-left:3px solid var(--amber); color:#7a4a00; font-weight:500; }
+
+/* ── SECTION LABEL ── */
+.section-label { display:flex; align-items:center; gap:12px; font-family:'Noto Sans TC',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.22em; color:var(--ink-light); margin:28px 0 16px; padding-left:36px; }
+.section-label::after { content:''; flex:1; height:1px; background:linear-gradient(to right,rgba(122,92,58,.25),transparent); }
+
+/* ── CARDS ── */
+.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px; margin:12px 0 4px; }
+.card { background:white; border:1px solid rgba(201,148,58,.18); padding:16px; position:relative; }
+.card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--accent,var(--vermillion)); opacity:.4; }
+.card h4 { font-family:'Noto Serif TC',serif; font-size:.9rem; font-weight:700; color:var(--ink); margin-bottom:6px; letter-spacing:.04em; }
+.card p { font-family:'Noto Sans TC',sans-serif; font-size:.78rem; line-height:1.7; color:var(--ink-mid); font-weight:300; }
+
+/* ── TABLE ── */
+.hotel-tbl { width:100%; border-collapse:collapse; font-size:.87rem; background:white; border:1px solid rgba(201,148,58,.2); }
+.hotel-tbl th { background:var(--ink); color:var(--gold-light); font-family:'Noto Sans TC',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.12em; padding:12px 16px; text-align:left; }
+.hotel-tbl td { padding:13px 16px; border-bottom:1px solid rgba(201,148,58,.1); color:var(--ink-mid); line-height:1.6; font-family:'Noto Sans TC',sans-serif; font-size:.83rem; font-weight:300; }
+.hotel-tbl tr:last-child td { border-bottom:none; }
+.hotel-tbl td:first-child { font-weight:700; color:var(--deep-red); white-space:nowrap; }
+
+/* ── REMINDERS ── */
+.reminders { background:var(--ink); padding:28px; margin-top:16px; border-left:4px solid var(--vermillion); position:relative; overflow:hidden; }
+.reminders::after { content:'⚠'; position:absolute; right:20px; top:12px; font-size:5rem; color:rgba(192,57,43,.07); line-height:1; }
+.reminders h3 { font-family:'Noto Serif TC',serif; font-size:1.2rem; font-weight:700; color:var(--gold-light); margin-bottom:18px; letter-spacing:.1em; }
+.rem-item { display:flex; gap:12px; padding:11px 0; border-bottom:1px solid rgba(255,255,255,.05); font-family:'Noto Sans TC',sans-serif; font-size:.84rem; font-weight:300; line-height:1.75; color:rgba(250,245,232,.78); }
+.rem-item:last-child { border-bottom:none; padding-bottom:0; }
+.rem-icon { flex-shrink:0; font-size:1rem; margin-top:2px; }
+.rem-item.urgent { color:#ffd080; font-weight:500; }
+
+/* ── FAREWELL ── */
+.farewell { text-align:center; margin-top:40px; padding:36px 24px; background:white; border:1px solid rgba(201,148,58,.2); border-top:3px solid var(--vermillion); }
+.farewell-icons { font-size:2rem; margin-bottom:16px; letter-spacing:.3em; }
+.farewell h3 { font-family:'Noto Serif TC',serif; font-size:1.5rem; font-weight:900; color:var(--ink); margin-bottom:10px; letter-spacing:.08em; }
+.farewell p { font-family:'Noto Sans TC',sans-serif; font-size:.88rem; font-weight:300; color:var(--ink-mid); line-height:1.9; max-width:360px; margin:0 auto; }
+
+/* ── YEAR BADGE ── */
+.year-badge { display:inline-block; background:var(--vermillion); color:white; font-family:'Noto Sans TC',sans-serif; font-size:.7rem; font-weight:700; padding:2px 10px; letter-spacing:.1em; margin-left:8px; vertical-align:middle; }
+
+/* ── COLOR THEMES ── */
+.d2 { --accent:var(--jade); }
+.d3 { --accent:var(--sky-blue); }
+.d4 { --accent:#1A3A6A; }
+.d5 { --accent:var(--jade); }
+.d6 { --accent:var(--persimmon); }
+.d7 { --accent:var(--gold); }
+.d2 .seal { background:var(--jade); }
+.d3 .seal { background:var(--sky-blue); }
+.d4 .seal { background:#1A3A6A; }
+.d5 .seal { background:var(--jade); }
+.d6 .seal { background:var(--persimmon); }
+.d7 .seal { background:var(--gold); }
+.d7 .seal-num,.d7 .seal-word { color:var(--ink); }
+
+@media(max-width:560px){
+  .hero h1 .h1-zh { font-size:2.2rem; }
+  .seal { width:58px; height:58px; }
+  .seal-num { font-size:1.4rem; }
+  .tl { padding-left:28px; }
+  .section-label { padding-left:28px; }
+  .ev::before { left:-22px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-wash"></div>
+  <div class="bamboo left"></div>
+  <div class="bamboo right"></div>
+  <div class="ink-dots" id="inkDots"></div>
+  <div class="hero-inner">
+    <div class="stamp-top">家族旅遊 · 二〇二六年 六月二十九日 至 七月五日</div>
+    <h1>
+      <span class="h1-en">Nashville & Huntsville</span>
+      <span class="h1-zh">納什維爾<span class="amp">·</span>亨茨維爾</span>
+    </h1>
+    <div class="hero-subtitle">音樂、火箭與煙火——南方七日家族之旅</div>
+    <div class="zh-rule"><div class="zh-rule-diamond"></div></div>
+    <div class="hero-meta">
+      <span class="meta-tag">👨‍👩‍👧‍👦 五位大人（含三位長者）· 兩位孩子</span>
+      <span class="meta-tag">🚗 兩輛 SUV · Dollar 租車 @ 納什維爾機場</span>
+      <span class="meta-tag">🌙 七天 · 田納西州 & 阿拉巴馬州</span>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-strip" id="nav">
+  <button class="nav-btn active" onclick="show(1)" data-d="1"><div class="nav-kanji">一</div><div class="nav-label-zh">6/29 日</div></button>
+  <button class="nav-btn" onclick="show(2)" data-d="2"><div class="nav-kanji">二</div><div class="nav-label-zh">6/30 一</div></button>
+  <button class="nav-btn" onclick="show(3)" data-d="3"><div class="nav-kanji">三</div><div class="nav-label-zh">7/1 二</div></button>
+  <button class="nav-btn" onclick="show(4)" data-d="4"><div class="nav-kanji">四</div><div class="nav-label-zh">7/2 三</div></button>
+  <button class="nav-btn" onclick="show(5)" data-d="5"><div class="nav-kanji">五</div><div class="nav-label-zh">7/3 四</div></button>
+  <button class="nav-btn" onclick="show(6)" data-d="6"><div class="nav-kanji">六</div><div class="nav-label-zh">7/4 五</div></button>
+  <button class="nav-btn" onclick="show(7)" data-d="7"><div class="nav-kanji">七</div><div class="nav-label-zh">7/5 六</div></button>
+  <button class="nav-btn" onclick="show(8)" data-d="8"><div class="nav-kanji">資</div><div class="nav-label-zh">旅遊資訊</div></button>
+</nav>
+
+<main class="content">
+
+<!-- 第一天 -->
+<div class="day-panel d1 active" id="p1">
+  <div class="day-header">
+    <div class="seal"><div class="seal-word">第一天</div><div class="seal-num">一</div></div>
+    <div class="day-meta">
+      <div class="day-date-zh">二〇二六年 六月二十九日（星期日）</div>
+      <div class="day-title-zh">🎵 抵達 · 強尼·卡許博物館</div>
+    </div>
+  </div>
+  <div class="section-label">今日行程</div>
+  <div class="tl">
+    <div class="ev">
+      <div class="ev-time">下午 2:45</div>
+      <div class="ev-title-zh">✈️ 抵達納什維爾 BNA 機場</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午 3:30</div>
+      <div class="ev-title-zh">🚗 Dollar 租車公司取車</div>
+      <div class="ev-desc-zh">航站樓內，營業至午夜。兩輛 SUV 在此取車。</div>
+      <div class="callout warn"><span class="callout-icon">⚠️</span><span><strong>取車前務必記錄車輛現有損傷！</strong>兩輛車都要仔細繞行拍照存證。</span></div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午 4:00</div>
+      <div class="ev-title-zh">🎸 強尼·卡許博物館（Johnny Cash Museum）</div>
+      <div class="ev-desc-zh">展出吉他、演出服、親筆信件與影像紀錄。建議停留 <strong>1 至 1.5 小時</strong>。全年每日 9 AM–7 PM 開放。</div>
+      <div class="callout ticket"><span class="callout-icon">🎟️</span><span>請提前上網購票——七月四日連假期間尤為重要。</span></div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午 6:00</div>
+      <div class="ev-title-zh">🌆 百老匯大道夜間漫步</div>
+      <div class="ev-desc-zh">霓虹招牌、音樂從各處溢出——即使只是散步也充滿納什維爾獨特魅力。</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">晚上 7:00</div>
+      <div class="ev-title-zh">🍽️ 晚餐：Assembly Food Hall 美食廣場</div>
+      <div class="ev-desc-zh">三十餘家美食攤位、現場演奏，老少各有所好，大團體出行首選。</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">晚上 8:30</div>
+      <div class="ev-title-zh">🏨 入住：Holiday Inn Express Nashville MetroCenter Downtown</div>
+      <div class="ev-desc-zh">IHG 旗下酒店，前兩晚於此下榻。附贈早餐。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 第二天 -->
+<div class="day-panel d2" id="p2">
+  <div class="day-header">
+    <div class="seal"><div class="seal-word">第二天</div><div class="seal-num">二</div></div>
+    <div class="day-meta">
+      <div class="day-date-zh">二〇二六年 六月三十日（星期一）</div>
+      <div class="day-title-zh">🎶 鄉村音樂名人堂 + 萊曼大禮堂 + 百老匯</div>
+    </div>
+  </div>
+  <div class="section-label">今日行程</div>
+  <div class="tl">
+    <div class="ev">
+      <div class="ev-time">早晨</div>
+      <div class="ev-title-zh">🍳 享用酒店附贈早餐</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">上午 9:00</div>
+      <div class="ev-title-zh">🎶 鄉村音樂名人堂博物館（Country Music Hall of Fame）</div>
+      <div class="ev-desc-zh">兩層展覽，含桃莉·巴頓專區、樂器與演出服飾。全館平坦且有冷氣。每日 9 AM–5 PM 開放。</div>
+      <div class="callout access"><span class="callout-icon">❄️</span><span>全館平坦且有冷氣——七月炎夏中長者的最佳去處。</span></div>
+      <div class="callout ticket"><span class="callout-icon">🎟️</span><span><strong>務必提前線上購票！</strong>連假期間極易售罄。</span></div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午 1:00</div>
+      <div class="ev-title-zh">🥗 午餐：百老匯大道周邊餐廳</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午 2:30</div>
+      <div class="ev-title-zh">🎼 萊曼大禮堂日間導覽（Ryman Auditorium）</div>
+      <div class="ev-desc-zh">「鄉村音樂的母教堂」。請至 ryman.com 查詢導覽時間與當晚演出資訊。</div>
+      <div class="callout info"><span class="callout-icon">✅</span><span><strong>好消息：萊曼大禮堂自 2026 年起已改為每週七天開放</strong>（原本週四休館的限制已取消）——星期一完全沒問題！</span></div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午 5:00</div>
+      <div class="ev-title-zh">🌆 百老匯大道漫步 / 周邊探索</div>
+      <div class="ev-desc-zh">利用傍晚時光在納什維爾市中心隨意閒逛，感受這座城市的活力。</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">晚上 7:00</div>
+      <div class="ev-title-zh">🎺 晚餐：Honky Tonk Central（百老匯大道）</div>
+      <div class="ev-desc-zh">三層樓免費現場音樂。盡量搶佔<strong>三樓露臺座位</strong>，俯瞰整條著名大道。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 第三天 -->
+<div class="day-panel d3" id="p3">
+  <div class="day-header">
+    <div class="seal"><div class="seal-word">第三天</div><div class="seal-num">三</div></div>
+    <div class="day-meta">
+      <div class="day-date-zh">二〇二六年 七月一日（星期二）</div>
+      <div class="day-title-zh">🌸 奇克伍德莊園 → 🚗 納什維爾 → 亨茨維爾</div>
+    </div>
+  </div>
+  <div class="section-label">今日行程</div>
+  <div class="tl">
+    <div class="ev">
+      <div class="ev-time">早晨</div>
+      <div class="ev-title-zh">🍳 享用酒店附贈早餐</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">早餐後</div>
+      <div class="ev-title-zh">🏨 退房：Holiday Inn Express Nashville MetroCenter</div>
+      <div class="ev-desc-zh">早餐後辦理退房，將行李放入車中，直接前往奇克伍德，無需折返。</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">上午 9:00</div>
+      <div class="ev-title-zh">🌸 奇克伍德莊園與花園（Cheekwood Estate & Gardens）</div>
+      <div class="ev-desc-zh">55 英畝的夏日繁花、兒童花園、藝術展覽與歷史莊園建築。建議停留 <strong>2 至 3 小時</strong>。每日 9 AM–5 PM 開放（週二可入場 ✅）。距酒店約 15 分鐘車程。</div>
+      <div class="callout ticket"><span class="callout-icon">🎟️</span><span>請提前上網購票。</span></div>
+      <div class="callout access"><span class="callout-icon">⚠️</span><span>部分步道有起伏地形與不平整路面，<strong>建議長者穿著舒適鞋履</strong>，並視需要備妥輪椅或助行器。莊園建築內部分區域有樓梯，無法完全無障礙通行。</span></div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">中午 12:00</div>
+      <div class="ev-title-zh">🥗 午餐：奇克伍德園內咖啡館或周邊餐廳</div>
+      <div class="ev-desc-zh">在莊園內的咖啡館用餐，或驅車至附近的餐廳享用午餐。</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午 1:30</div>
+      <div class="ev-title-zh">🛣️ 驅車前往阿拉巴馬州亨茨維爾</div>
+      <div class="ev-desc-zh">輕鬆高速公路行程，<strong>約 2 小時</strong>。孩子們可在車上小睡或玩公路旅行遊戲。</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午 3:30</div>
+      <div class="ev-title-zh">🏠 抵達 T.S. 叔叔家</div>
+      <div class="ev-desc-zh">安頓行李，放鬆休息。未來三晚的亨茨維爾據點。</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">傍晚</div>
+      <div class="ev-title-zh">🦸 晚餐：Superhero Chefs 超級英雄餐廳</div>
+      <div class="ev-desc-zh">超級英雄主題餐廳——孩子們一定愛極了！提供無麩質選項。</div>
+      <div class="callout info"><span class="callout-icon">✅</span><span>Superhero Chefs 週二開放，沒有問題！</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 第四天 -->
+<div class="day-panel d4" id="p4">
+  <div class="day-header">
+    <div class="seal"><div class="seal-word">第四天</div><div class="seal-num">四</div></div>
+    <div class="day-meta">
+      <div class="day-date-zh">二〇二六年 七月二日（星期三）</div>
+      <div class="day-title-zh">🚀 美國太空與火箭中心</div>
+    </div>
+  </div>
+  <div class="section-label">今日行程</div>
+  <div class="tl">
+    <div class="ev">
+      <div class="ev-time">上午 9:00</div>
+      <div class="ev-title-zh">🛸 美國太空與火箭中心（U.S. Space & Rocket Center）——全日遊！</div>
+      <div class="ev-desc-zh">計畫在此度過大半天。全家老小都能樂在其中的亮點：</div>
+      <div class="callout ticket"><span class="callout-icon">🎟️</span><span>請提前上網購票。</span></div>
+      <div class="callout access"><span class="callout-icon">♿</span><span>訂票時請<strong>詢問長者輔助移動工具與電動代步車</strong>租借事宜——館內提供此服務。</span></div>
+    </div>
+  </div>
+  <div class="card-grid" style="margin-left:36px; margin-bottom:8px;">
+    <div class="card"><h4>🪐 土星五號展廳</h4><p>全館室內、平坦且涼爽。巨型火箭令人嘆為觀止，長者首選。</p></div>
+    <div class="card"><h4>🌌 天文館放映</h4><p>入館後確認放映時程，合理安排參觀節奏。</p></div>
+    <div class="card"><h4>🚀 火箭花園</h4><p>戶外展區，鋪裝平坦。七月豔陽下記得防曬、戴帽。</p></div>
+    <div class="card"><h4>🧪 兒童互動展區</h4><p>動手體驗設施遍布全館，孩子們保證玩得不亦樂乎。</p></div>
+  </div>
+  <div class="tl">
+    <div class="ev">
+      <div class="ev-time">下午 6:00</div>
+      <div class="ev-title-zh">🧀 晚餐：MELT Huntsville 起司料理餐廳</div>
+      <div class="ev-desc-zh">亨茨維爾市中心深受喜愛的烤起司與家常菜專門店。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 第五天 -->
+<div class="day-panel d5" id="p5">
+  <div class="day-header">
+    <div class="seal"><div class="seal-word">第五天</div><div class="seal-num">五</div></div>
+    <div class="day-meta">
+      <div class="day-date-zh">二〇二六年 七月三日（星期四）</div>
+      <div class="day-title-zh">🌺 亨茨維爾深度探索</div>
+    </div>
+  </div>
+  <div class="section-label">今日行程</div>
+  <div class="tl">
+    <div class="ev">
+      <div class="ev-time">上午 9:00</div>
+      <div class="ev-title-zh">🌸 亨茨維爾植物園（Huntsville Botanical Garden）</div>
+      <div class="ev-desc-zh">全程鋪裝步道，夏日繁花盛放，節奏悠閒。每日 9 AM–6 PM 開放。</div>
+      <div class="callout access"><span class="callout-icon">♿</span><span>步道全程鋪裝，長者與全家均舒適易行。</span></div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">中午 12:00</div>
+      <div class="ev-title-zh">🍔 午餐：Supper Heroes 漫畫英雄漢堡</div>
+      <div class="ev-desc-zh">漫畫主題漢堡店——亨茨維爾公認最佳餐廳之一。</div>
+      <div class="callout info"><span class="callout-icon">✅</span><span>Supper Heroes <strong>週日與週一公休</strong>——七月三日為星期四，放心前往！</span></div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午 1:30</div>
+      <div class="ev-title-zh">🏛️ 早期作品兒童博物館（EarlyWorks Children's Museum）</div>
+      <div class="ev-desc-zh">以互動方式呈現歷史，全館室內冷氣。週二至六 9 AM–4 PM，週日 11 AM–4 PM。1:30 入館可玩足 2 小時以上。</div>
+      <div class="callout info"><span class="callout-icon">✅</span><span>EarlyWorks <strong>週一公休</strong>——七月三日為星期四，沒有問題！</span></div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">傍晚</div>
+      <div class="ev-title-zh">🎆 於 T.S. 叔叔家休息或欣賞七月三日慶典</div>
+      <div class="ev-desc-zh">在家放鬆，或到亨茨維爾各處體驗七月四日前夕的節慶氛圍。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 第六天 -->
+<div class="day-panel d6" id="p6">
+  <div class="day-header">
+    <div class="seal"><div class="seal-word">第六天</div><div class="seal-num">六</div></div>
+    <div class="day-meta">
+      <div class="day-date-zh">二〇二六年 七月四日（星期五）——美國國慶日 🎆</div>
+      <div class="day-title-zh">🎆 返回納什維爾 · 獨立紀念日</div>
+    </div>
+  </div>
+  <div class="section-label">今日行程</div>
+  <div class="tl">
+    <div class="ev">
+      <div class="ev-time">早晨</div>
+      <div class="ev-title-zh">👋 與 T.S. 叔叔道別，返程納什維爾</div>
+      <div class="ev-desc-zh">收拾行李出發，輕鬆高速公路約 2 小時。</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午</div>
+      <div class="ev-title-zh">🏨 在機場酒店放置行李、稍作梳洗</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">下午 3:00</div>
+      <div class="ev-title-zh">🌊 河濱公園——坎伯蘭河畔</div>
+      <div class="ev-desc-zh">平坦河濱步道，可欣賞納什維爾壯麗天際線。<strong>請提早佔位</strong>，四日烟火開始前人潮洶湧！</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">晚上 9:00</div>
+      <div class="ev-title-zh">🎆 坎伯蘭河上空七月四日煙火秀</div>
+      <div class="ev-desc-zh">納什維爾最盛大的年度慶典，為此次旅行畫下完美句點！</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">晚上 9:30</div>
+      <div class="ev-title-zh">🚗 歸還租車——Dollar Car Rental @ BNA 機場</div>
+      <div class="ev-desc-zh">營業至午夜，煙火結束後直接前往歸還兩輛 SUV。</div>
+    </div>
+    <div class="ev">
+      <div class="ev-time">晚上 10:00</div>
+      <div class="ev-title-zh">🏨 入住機場酒店</div>
+    </div>
+  </div>
+  <div class="card-grid" style="margin-top:14px;">
+    <div class="card"><h4>🏨 Element Nashville Airport</h4><p>萬豪旗下 · 附廚房套房 · 距 BNA 航站樓約 5 分鐘</p></div>
+    <div class="card"><h4>🏨 Holiday Inn Express Nashville Airport</h4><p>IHG 旗下 · 附贈早餐 · 距 BNA 約 5 分鐘</p></div>
+  </div>
+  <div class="callout warn" style="margin-top:12px;"><span class="callout-icon">⚠️</span><span>Holiday Inn Express 納什維爾機場店評價不一——建議提前要求安排乾淨房間，入住時確認房況。</span></div>
+</div>
+
+<!-- 第七天 -->
+<div class="day-panel d7" id="p7">
+  <div class="day-header">
+    <div class="seal"><div class="seal-word">第七天</div><div class="seal-num">七</div></div>
+    <div class="day-meta">
+      <div class="day-date-zh">二〇二六年 七月五日（星期六）</div>
+      <div class="day-title-zh">✈️ 返程啟程</div>
+    </div>
+  </div>
+  <div class="section-label">今日行程</div>
+  <div class="tl">
+    <div class="ev">
+      <div class="ev-time">早晨 6:00</div>
+      <div class="ev-title-zh">✈️ 從納什維爾 BNA 機場出發</div>
+      <div class="ev-desc-zh">兩間酒店距航站樓僅 5 分鐘。建議前一晚完成網路辦理登機手續，一路順風！ 👋</div>
+      <div class="callout info"><span class="callout-icon">💡</span><span>連假週末 BNA 客流較多——建議前一晚提前線上辦理登機。</span></div>
+    </div>
+  </div>
+  <div class="farewell">
+    <div class="farewell-icons">🎸　🚀　🎆</div>
+    <h3>難忘的旅程！</h3>
+    <p>從強尼·卡許的烈焰之環，到土星五號的震撼雄姿，再到坎伯蘭河上空絢爛的煙火——這些珍貴回憶，將永遠珍藏心中。</p>
+  </div>
+</div>
+
+<!-- 資訊 -->
+<div class="day-panel" id="p8">
+  <div class="day-header" style="--accent:var(--vermillion);">
+    <div class="seal" style="background:var(--gold);"><div class="seal-word" style="color:var(--ink);">資訊</div><div class="seal-num" style="color:var(--ink);">★</div></div>
+    <div class="day-meta">
+      <div class="day-date-zh" style="color:var(--ink-light);">旅遊總覽</div>
+      <div class="day-title-zh">住宿、租車與注意事項</div>
+    </div>
+  </div>
+
+  <div class="section-label">住宿總表</div>
+  <table class="hotel-tbl">
+    <thead><tr><th>日期</th><th>住宿安排</th></tr></thead>
+    <tbody>
+      <tr><td>6/29 – 7/1</td><td>Holiday Inn Express & Suites Nashville MetroCenter Downtown by IHG</td></tr>
+      <tr><td>7/1 – 7/4</td><td>🏠 T.S. 叔叔家（阿拉巴馬州亨茨維爾）</td></tr>
+      <tr><td>7/4 晚</td><td>Element Nashville Airport（萬豪）& Holiday Inn Express Nashville Airport（IHG）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-label" style="margin-top:28px;">租車資訊</div>
+  <div class="callout ticket"><span class="callout-icon">🚗</span><span><strong>Dollar 租車 @ BNA 納什維爾機場</strong> — 二〇二六年六月二十九日下午 3:30 取車 · 七月四日傍晚還車 · 營業至午夜 · <strong>取車時務必記錄車輛狀況！</strong></span></div>
+
+  <div class="section-label" style="margin-top:28px;">重要提醒</div>
+  <div class="reminders">
+    <h3>⚠️ 切勿遺忘</h3>
+    <div class="rem-item urgent"><span class="rem-icon">🚨</span><span><strong>奇克伍德莊園週一公休</strong>——已移至第三天（七月一日，週二）上午遊覽，沒有問題。✅</span></div>
+    <div class="rem-item"><span class="rem-icon">🎟️</span><span>請提前線上購票：<strong>強尼·卡許博物館、鄉村音樂名人堂、美國太空與火箭中心</strong>——七月四日連假尤為重要。</span></div>
+    <div class="rem-item"><span class="rem-icon">🍔</span><span><strong>Supper Heroes 週日與週一公休</strong>——你們前往的七月一日（週二晚餐）與七月三日（週四午餐）均沒問題。✅</span></div>
+    <div class="rem-item"><span class="rem-icon">🏛️</span><span><strong>EarlyWorks 兒童博物館週一公休</strong>——七月三日為星期四，完全沒問題。✅</span></div>
+    <div class="rem-item"><span class="rem-icon">🎼</span><span><strong>萊曼大禮堂現已全週七天開放</strong>（含週一）——二〇二六年已取消原本的週四休館限制。✅</span></div>
+    <div class="rem-item"><span class="rem-icon">♿</span><span>訂購太空與火箭中心門票時，請<strong>詢問長者輔助移動工具及電動代步車</strong>租借服務。</span></div>
+    <div class="rem-item"><span class="rem-icon">🏨</span><span><strong>Holiday Inn Express 納什維爾機場店評價不一</strong>——入住前確認房況，建議提早要求安排乾淨房間。</span></div>
+    <div class="rem-item"><span class="rem-icon">📸</span><span>六月二十九日從 Dollar 租車取車時，<strong>務必拍照記錄車輛現有損傷</strong>。</span></div>
+  </div>
+</div>
+
+</main>
+
+<script>
+const id=document.getElementById('inkDots');
+for(let i=0;i<20;i++){
+  const d=document.createElement('div');d.className='ink-dot';
+  const sz=20+Math.random()*60;
+  d.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;--d:${6+Math.random()*8}s;--dl:${-Math.random()*8}s;--op:${0.1+Math.random()*0.2}`;
+  id.appendChild(d);
+}
+function show(n){
+  document.querySelectorAll('.day-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('p'+n).classList.add('active');
+  document.querySelector('[data-d="'+n+'"]').classList.add('active');
+  document.querySelector('.content').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
